@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Vicky Cuts Barbershop — sharp fades, classic cuts and premium grooming. Book your next haircut today.">
+  <title>Vicky Cuts | Premium Barbershop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d7b45a;
+      --gold-light: #f2d98b;
+      --black: #101010;
+      --panel: #191919;
+      --white: #f7f5ef;
+      --muted: #b7b3a9;
+      --border: rgba(215,180,90,.24);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .container { width: min(1120px, 90%); margin: auto; }
+
+    .gold { color: var(--gold); }
+
+    .section { padding: 90px 0; }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .76rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 590px;
+      margin-bottom: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #17130a;
+      padding: 13px 22px;
+      border-radius: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline { background: transparent; color: var(--gold); }
+    .btn-outline:hover { color: #17130a; }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16,16,16,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Playfair Display", serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .brand-mark {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 5px 9px;
+      font-family: "DM Sans", sans-serif;
+      font-size: .85rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a:not(.btn) {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .menu-toggle {
+      display: none;
+      color: var(--gold);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 620px;
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(12,12,12,.98) 0%, rgba(12,12,12,.87) 47%, rgba(12,12,12,.28) 100%),
+        url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+
+    .hero-content { padding: 90px 0; max-width: 680px; }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 1.03;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      color: #d1cec6;
+      max-width: 510px;
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; }
+
+    .hero-note {
+      margin-top: 38px;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    /* Trust strip */
+    .trust-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #151515;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+
+    .trust-item { padding: 23px 10px; }
+    .trust-item strong { display: block; color: var(--gold); font-size: 1rem; }
+    .trust-item span { color: var(--muted); font-size: .82rem; }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--panel);
+      padding: 28px;
+      border: 1px solid #292929;
+      transition: .25s;
+    }
+
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .service-icon { color: var(--gold); font-size: 1.7rem; margin-bottom: 18px; }
+
+    .service-card h3 { font-size: 1.13rem; margin-bottom: 8px; }
+    .service-card p { color: var(--muted); font-size: .91rem; min-height: 48px; }
+
+    .service-bottom {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid #303030;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price { color: var(--gold); font-weight: 700; font-size: 1.1rem; }
+    .book-link { font-size: .84rem; font-weight: 700; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-image { height: 440px; border: 1px solid var(--border); }
+    .about-copy p { color: var(--muted); margin: 18px 0; }
+
+    .feature-list { list-style: none; display: grid; gap: 12px; margin: 24px 0; }
+    .feature-list li::before { content: "✦"; color: var(--gold); margin-right: 12px; }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-grid img {
+      height: 270px;
+      filter: saturate(.75);
+      transition: .3s;
+    }
+
+    .gallery-grid img:hover { filter: saturate(1); transform: scale(1.015); }
+
+    .gallery-note { color: var(--muted); font-size: .8rem; margin-top: 14px; }
+
+    /* Booking */
+    .booking-section { background: #171613; }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .booking-info p { color: var(--muted); margin: 15px 0 25px; }
+
+    .info-row {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row strong { display: block; color: var(--gold); font-size: .86rem; }
+    .info-row span { color: var(--white); font-size: .95rem; }
+
+    .booking-form {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; margin-bottom: 7px; font-size: .88rem; }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      background: #1b1b1b;
+      color: var(--white);
+      border: 1px solid #393939;
+      padding: 12px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+
+    .booking-form .btn { width: 100%; }
+
+    .form-note { font-size: .78rem; color: var(--muted); margin-top: 12px; }
+
+    /* Footer */
+    footer { padding: 30px 0; border-top: 1px solid var(--border); }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    footer p { color: var(--muted); font-size: .84rem; }
+    .footer-links { display: flex; gap: 18px; color: var(--gold); font-size: .86rem; }
+
+    .floating-book {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 90;
+      box-shadow: 0 4px 24px #0009;
+    }
+
+    @media (max-width: 850px) {
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #151515;
+        border-bottom: 1px solid var(--border);
+        padding: 22px 5%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links .btn { text-align: center; }
+
+      .hero { min-height: 560px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .booking-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-image { height: 340px; }
+    }
+
+    @media (max-width: 560px) {
+      .section { padding: 65px 0; }
+      .hero { min-height: 570px; }
+      .hero-content { padding: 65px 0; }
+      .hero h1 { font-size: 3.1rem; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-item { padding: 15px 10px; border-bottom: 1px solid #292929; }
+      .services-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid img { height: 260px; }
+      .booking-form { padding: 20px; }
+      .floating-book { right: 12px; bottom: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#home" class="brand" aria-label="Vicky Cuts home">
+        <span class="brand-mark">VC</span>
+        <span>VICKY <span class="gold">CUTS</span></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation">
+        ☰ Menu
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact" class="btn">Book a Cut</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">Precision · Style · Confidence</div>
+        <h1>More Than a Cut.<br><span class="gold">It's Your Style.</span></h1>
+        <p>
+          Sharp fades, clean lines and timeless grooming.
+          Walk out looking fresh and feeling confident.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Book Your Appointment ↗</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
+        </div>
+        <div class="hero-note">YOUR LOOK. YOUR STYLE. YOUR STANDARD.</div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Our approach">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <strong>PRECISION CUTS</strong>
+          <span>Attention to every detail</span>
+        </div>
+        <div class="trust-item">
+          <strong>FRESH STYLE</strong>
+          <span>Classic looks, modern fades</span>
+        </div>
+        <div class="trust-item">
+          <strong>CLIENT FIRST</strong>
+          <span>Your style comes first</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="eyebrow">What We Offer</div>
+        <h2 class="section-title">The Art of a <span class="gold">Great Cut</span></h2>
+        <p class="section-intro">
+          From a clean everyday look to a complete grooming refresh,
+          choose the service that suits your style.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">✂</div>
+            <h3>Classic Haircut</h3>
+            <p>A neat, timeless cut tailored to your preferred style.</p>
+            <div class="service-bottom">
+              <span class="price">KSh 300</span>
+              <a href="#contact" class="book-link">Book →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">◈</div>
+            <h3>Skin Fade</h3>
+            <p>A smooth fade with sharp, clean finishing.</p>
+            <div class="service-bottom">
+              <span class="price">KSh 500</span>
+              <a href="#contact" class="book-link">Book →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">✦</div>
+            <h3>Beard Trim</h3>
+            <p>Shape, tidy and define your beard for a polished look.</p>
+            <div class="service-bottom">
+              <span class="price">KSh 200</span>
+              <a href="#contact" class="book-link">Book →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">♛</div>
+            <h3>Haircut & Beard</h3>
+            <p>A complete fresh look with a coordinated finish.</p>
+            <div class="service-bottom">
+              <span class="price">KSh 600</span>
+              <a href="#contact" class="book-link">Book →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">◇</div>
+            <h3>Kids' Haircut</h3>
+            <p>A neat and comfortable haircut for the young ones.</p>
+            <div class="service-bottom">
+              <span class="price">KSh 250</span>
+              <a href="#contact" class="book-link">Book →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">★</div>
+            <h3>Premium Grooming</h3>
+            <p>A tailored grooming session for a special occasion.</p>
+            <div class="service-bottom">
+              <span class="price">KSh 800</span>
+              <a href="#contact" class="book-link">Book →</a>
+            </div>
+          </article>
+        </div>
+        <p class="gallery-note">Demo prices — update these to reflect the business's actual prices.</p>
+      </div>
+    </section>
+
+    <section class="section" id="about" style="background:#151515">
+      <div class="container about-grid">
+        <div>
+          <img class="about-image"
+            src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=85"
+            alt="Barber carefully styling a client's haircut" loading="lazy">
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">The Vicky Cuts Experience</div>
+          <h2 class="section-title">Every Detail <span class="gold">Matters.</span></h2>
+          <p>
+            Your haircut is part of how you express yourself.
+            Our approach is simple: listen to what you want,
+            pay attention to detail and help you leave feeling fresh.
+          </p>
+          <ul class="feature-list">
+            <li>Personalized styles</li>
+            <li>Attention to detail</li>
+            <li>Comfortable grooming experience</li>
+            <li>Clear service prices</li>
+          </ul>
+          <a href="#contact" class="btn">Let's Get You Fresh ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="eyebrow">Fresh Looks</div>
+        <h2 class="section-title">Style <span class="gold">Inspiration</span></h2>
+        <p class="section-intro">
+          Explore a few looks that can inspire your next cut.
+        </p>
+
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
+            alt="Barbershop interior" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
+            alt="Barber working on a haircut" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
+            alt="Barber styling hair" loading="lazy">
+        </div>
+        <p class="gallery-note">
+          Demo gallery using external photos. Replace with authorized photos
+          of actual work before presenting this as a real business website.
+        </p>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="contact">
+      <div class="container booking-grid">
+        <div class="booking-info">
+          <div class="eyebrow">Your Next Fresh Cut</div>
+          <h2 class="section-title">Ready for a <span class="gold">New Look?</span></h2>
+          <p>
+            Choose your preferred service and send a booking enquiry on WhatsApp.
+            We'll use the details you provide to prepare your message.
+          </p>
+
+          <div class="info-row">
+            <strong>LOCATION</strong>
+            <span>Your town, Kenya — demo address</span>
+          </div>
+          <div class="info-row">
+            <strong>OPENING HOURS</strong>
+            <span>Monday – Saturday: 8:00 AM – 8:00 PM</span>
+          </div>
+          <div class="info-row">
+            <strong>SUNDAY</strong>
+            <span>10:00 AM – 5:00 PM</span>
+          </div>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+          <div class="eyebrow">Booking Enquiry</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:22px">
+            Let's Book Your Cut
+          </h3>
+
+          <div class="form-group">
+            <label for="customerName">Your name</label>
+            <input id="customerName" name="name" type="text"
+              placeholder="Enter your name" autocomplete="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Choose a service</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Classic Haircut — KSh 300</option>
+              <option>Skin Fade — KSh 500</option>
+              <option>Beard Trim — KSh 200</option>
+              <option>Haircut & Beard — KSh 600</option>
+              <option>Kids' Haircut — KSh 250</option>
+              <option>Premium Grooming — KSh 800</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="bookingDate">Preferred date</label>
+            <input id="bookingDate" name="date" type="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="bookingTime">Preferred time</label>
+            <select id="bookingTime" name="time" required>
+              <option value="">Select a time</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+              <option>5:00 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+
+          <button class="btn" type="submit">Send Booking on WhatsApp ↗</button>
+          <p class="form-note">
+            This demo opens WhatsApp with a prepared message. The booking is
+            not confirmed until the business replies. No data is stored by this website.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a href="#home" class="brand">
+        <span class="brand-mark">VC</span>
+        <span>VICKY <span class="gold">CUTS</span></span>
+      </a>
+      <p>© <span id="year"></span> Vicky Cuts. Demo portfolio project.</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="btn floating-book" href="#contact" aria-label="Book a haircut">Book Now ↗</a>
+
+  <script>
+    // Replace with the business owner's WhatsApp number in international format.
+    // Example format for Kenya: 2547XXXXXXXX (digits only, no + or spaces).
+    const WHATSAPP_NUMBER = "2547XXXXXXXX";
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label",
+        isOpen ? "Close navigation" : "Open navigation");
+      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰ Menu";
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Prevent selecting a date in the past.
+    const dateInput = document.getElementById("bookingDate");
+    const localToday = new Date();
+    const year = localToday.getFullYear();
+    const month = String(localToday.getMonth() + 1).padStart(2, "0");
+    const day = String(localToday.getDate()).padStart(2, "0");
+    dateInput.min = `${year}-${month}-${day}`;
+
+    document.getElementById("bookingForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (WHATSAPP_NUMBER === "2547XXXXXXXX" ||
+          !/^254\d{9}$/.test(WHATSAPP_NUMBER)) {
+        alert("This is a demo number. The website owner must add a valid Kenyan WhatsApp number in the code before bookings can be sent.");
+        return;
+      }
+
+      const name = document.getElementById("customerName").value.trim();
+      const service = document.getElementById("service").value;
+      const date = dateInput.value;
+      const time = document.getElementById("bookingTime").value;
+
+      if (!name || !service || !date || !time) {
+        alert("Please complete all booking fields.");
+        return;
+      }
+
+      const message =
+        `Hello Vicky Cuts! I'd like to enquire about a booking.\n\n` +
+        `Name: ${name}\n` +
+        `Service: ${service}\n` +
+        `Preferred date: ${date}\n` +
+        `Preferred time: ${time}\n\n` +
+        `Please confirm availability. Thank you!`;
+
+      const whatsappURL =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
